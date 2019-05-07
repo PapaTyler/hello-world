@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.http import HttpResponse
+from django.shortcuts import render
+from instructors.views import hello, hello_python, sum_two, indexblog, instructors_list
+
 
 urlpatterns = [
+	url(r'^$', hello),
+	url(r'^python/$', hello_python),
+    url(r'^sum/(?P<a>\d+)/(?P<b>\d+)/$', sum_two),
     url(r'^admin/', admin.site.urls),
+    url(r'^blog/', indexblog),
+    url(r'^instructors/$', instructors_list),
 ]
